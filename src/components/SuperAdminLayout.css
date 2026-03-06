@@ -1,0 +1,236 @@
+.super-admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--color-cream);
+}
+
+.super-admin-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 280px;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: width 0.25s ease, transform 0.25s ease;
+  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.super-admin-sidebar--open {
+  width: 280px;
+}
+
+.super-admin-sidebar:not(.super-admin-sidebar--open) {
+  width: 72px;
+}
+
+.super-admin-sidebar__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.super-admin-sidebar__logo {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.super-admin-sidebar__title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #a5b4fc;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.super-admin-sidebar__toggle {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: #a5b4fc;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.super-admin-sidebar__toggle--closed {
+  transform: rotate(180deg);
+}
+
+.super-admin-sidebar__nav {
+  flex: 1;
+  padding: 16px 0;
+  overflow-y: auto;
+}
+
+.super-admin-sidebar__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 20px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  border-left: 3px solid transparent;
+}
+
+.super-admin-sidebar__item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #a5b4fc;
+}
+
+.super-admin-sidebar__item--active {
+  background: rgba(165, 180, 252, 0.15);
+  color: #a5b4fc;
+  border-left-color: #a5b4fc;
+}
+
+.super-admin-sidebar__icon {
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.super-admin-sidebar__footer {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.super-admin-sidebar__back {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.88rem;
+  text-decoration: none;
+  margin-bottom: 8px;
+  transition: color 0.2s ease;
+}
+
+.super-admin-sidebar__back:hover {
+  color: #a5b4fc;
+}
+
+.super-admin-sidebar__user {
+  display: block;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 8px;
+}
+
+.super-admin-sidebar__logout {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 10px 0;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.super-admin-sidebar__logout:hover {
+  color: #a5b4fc;
+}
+
+.super-admin-main {
+  flex: 1;
+  margin-left: 280px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.25s ease;
+}
+
+.super-admin-sidebar:not(.super-admin-sidebar--open) + .super-admin-main {
+  margin-left: 72px;
+}
+
+.super-admin-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 32px;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.super-admin-header__menu {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  color: var(--color-primary);
+  cursor: pointer;
+  padding: 4px;
+}
+
+.super-admin-header__title {
+  font-size: 1.25rem;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.super-admin-content {
+  flex: 1;
+  padding: 32px;
+}
+
+.super-admin-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 99;
+}
+
+@media (max-width: 960px) {
+  .super-admin-sidebar {
+    transform: translateX(-100%);
+  }
+
+  .super-admin-sidebar--open {
+    transform: translateX(0);
+  }
+
+  .super-admin-sidebar:not(.super-admin-sidebar--open) {
+    width: 280px;
+    transform: translateX(-100%);
+  }
+
+  .super-admin-main {
+    margin-left: 0;
+  }
+
+  .super-admin-header__menu {
+    display: block;
+  }
+
+  .super-admin-overlay--hidden {
+    display: none !important;
+  }
+
+  .super-admin-overlay:not(.super-admin-overlay--hidden) {
+    display: block;
+  }
+
+  .super-admin-content {
+    padding: 20px 16px;
+  }
+}

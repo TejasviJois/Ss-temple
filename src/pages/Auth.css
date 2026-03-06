@@ -1,0 +1,166 @@
+.auth-page .auth-container--wide {
+  max-width: 440px;
+}
+
+.auth-form--tabs {
+  padding: 36px 32px;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.auth-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-light);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: -1px;
+}
+
+.auth-tab:hover {
+  color: var(--color-primary);
+}
+
+.auth-tab--active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+.auth-back-otp {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  background: none;
+  border: none;
+  font-size: 0.82rem;
+  color: var(--color-text-light);
+  cursor: pointer;
+  text-align: center;
+}
+
+.auth-back-otp:hover {
+  color: var(--color-primary);
+}
+
+.auth-guest {
+  display: block;
+  text-align: center;
+  margin-top: 16px;
+  font-size: 0.88rem;
+  color: var(--color-text-light);
+}
+
+.auth-guest:hover {
+  color: var(--color-primary);
+}
+
+.auth-error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
+/* Registration steps */
+.register-steps {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.register-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+}
+
+.register-step--active {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.register-step--done {
+  color: var(--color-success);
+}
+
+.register-step__num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-cream-dark);
+  color: var(--color-text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.register-step--active .register-step__num {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.register-step--done .register-step__num {
+  background: var(--color-success);
+  color: var(--color-white);
+}
+
+.consent-box {
+  background: var(--color-cream);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.consent-box label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.consent-box input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--color-primary);
+}
+
+.consent-box a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.consent-box a:hover {
+  text-decoration: underline;
+}
+
+.consent-box + .consent-box {
+  margin-top: -8px;
+}

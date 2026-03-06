@@ -1,0 +1,145 @@
+.calendar-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.calendar-filter {
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1.5px solid var(--color-border);
+  color: var(--color-text-light);
+  transition: all 0.2s ease;
+}
+
+.calendar-filter:hover,
+.calendar-filter--active {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.calendar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.calendar-item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+}
+
+.calendar-item__date {
+  flex-shrink: 0;
+  width: 120px;
+  text-align: center;
+}
+
+.calendar-item__date span {
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.calendar-item__content {
+  flex: 1;
+}
+
+.calendar-item__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.calendar-item__header h3 {
+  font-size: 1.05rem;
+}
+
+.calendar-item__type {
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.calendar-item__content p {
+  font-size: 0.88rem;
+  color: var(--color-text-light);
+  line-height: 1.5;
+}
+
+.calendar-item__btn {
+  flex-shrink: 0;
+  padding: 8px 20px;
+  font-size: 0.85rem;
+}
+
+.register-form-container {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.register-form h2 {
+  font-size: 1.4rem;
+  margin-bottom: 24px;
+}
+
+.register-success {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.register-success__icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--color-success);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto 24px;
+}
+
+.register-success h2 {
+  margin-bottom: 16px;
+}
+
+.register-success p {
+  color: var(--color-text-light);
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .calendar-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .calendar-item__date {
+    width: auto;
+    text-align: left;
+  }
+  .calendar-item__btn {
+    width: 100%;
+    text-align: center;
+  }
+}

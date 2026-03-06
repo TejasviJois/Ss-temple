@@ -1,0 +1,233 @@
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+  background: var(--color-cream);
+}
+
+.dashboard__sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 260px;
+  background: linear-gradient(180deg, var(--color-primary-dark), var(--color-primary));
+  color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: width 0.25s ease, transform 0.25s ease;
+  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard__sidebar--open {
+  width: 260px;
+}
+
+.dashboard__sidebar:not(.dashboard__sidebar--open) {
+  width: 72px;
+}
+
+.dashboard__sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 20px;
+  border-bottom: 1px solid rgba(212, 168, 67, 0.2);
+  flex-shrink: 0;
+}
+
+.dashboard__logo {
+  font-size: 1.8rem;
+  color: var(--color-gold);
+  flex-shrink: 0;
+}
+
+.dashboard__title {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.dashboard__toggle {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--color-gold);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.dashboard__toggle--closed {
+  transform: rotate(180deg);
+}
+
+.dashboard__nav {
+  flex: 1;
+  padding: 16px 0;
+  overflow-y: auto;
+}
+
+.dashboard__nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 20px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  border-left: 3px solid transparent;
+}
+
+.dashboard__nav-item:hover {
+  background: rgba(212, 168, 67, 0.1);
+  color: var(--color-gold);
+}
+
+.dashboard__nav-item--active {
+  background: rgba(212, 168, 67, 0.15);
+  color: var(--color-gold);
+  border-left-color: var(--color-gold);
+}
+
+.dashboard__nav-icon {
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.dashboard__sidebar-footer {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(212, 168, 67, 0.2);
+}
+
+.dashboard__user {
+  padding: 8px 0;
+  margin-bottom: 8px;
+}
+
+.dashboard__user-name {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-gold);
+}
+
+.dashboard__user-id {
+  display: block;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 2px;
+}
+
+.dashboard__logout {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 10px 0;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.dashboard__logout:hover {
+  color: var(--color-gold);
+}
+
+.dashboard__main {
+  flex: 1;
+  margin-left: 260px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.25s ease;
+}
+
+.dashboard__sidebar:not(.dashboard__sidebar--open) + .dashboard__main {
+  margin-left: 72px;
+}
+
+.dashboard__header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 32px;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.dashboard__menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  color: var(--color-primary);
+  cursor: pointer;
+  padding: 4px;
+}
+
+.dashboard__page-title {
+  font-size: 1.35rem;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.dashboard__content {
+  flex: 1;
+  padding: 32px;
+}
+
+.dashboard__overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 99;
+}
+
+@media (max-width: 960px) {
+  .dashboard__sidebar {
+    transform: translateX(-100%);
+  }
+
+  .dashboard__sidebar--open {
+    transform: translateX(0);
+  }
+
+  .dashboard__sidebar:not(.dashboard__sidebar--open) {
+    width: 260px;
+    transform: translateX(-100%);
+  }
+
+  .dashboard__main {
+    margin-left: 0;
+  }
+
+  .dashboard__menu-btn {
+    display: block;
+  }
+
+  .dashboard__overlay--hidden {
+    display: none !important;
+  }
+
+  .dashboard__overlay:not(.dashboard__overlay--hidden) {
+    display: block;
+  }
+
+  .dashboard__content {
+    padding: 20px 16px;
+  }
+}

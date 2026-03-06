@@ -1,0 +1,486 @@
+.puja-booking {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.puja-steps {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.puja-steps::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 25%;
+  right: 25%;
+  height: 2px;
+  background: var(--color-border);
+  z-index: 0;
+}
+
+.puja-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.puja-step__num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: var(--color-cream-dark);
+  color: var(--color-text-light);
+  border: 2px solid var(--color-border);
+  transition: all 0.3s ease;
+}
+
+.puja-step--active .puja-step__num {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+.puja-step--done .puja-step__num {
+  background: var(--color-success);
+  color: var(--color-white);
+  border-color: var(--color-success);
+}
+
+.puja-step span {
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+  font-weight: 500;
+}
+
+.puja-step--active span {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.puja-form-section h2 {
+  font-size: 1.4rem;
+  margin-bottom: 24px;
+}
+
+.puja-types-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.puja-type-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 20px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--color-white);
+}
+
+.puja-type-card input {
+  display: none;
+}
+
+.puja-type-card--selected {
+  border-color: var(--color-primary);
+  background: rgba(139, 26, 26, 0.03);
+}
+
+.puja-type-card__content h4 {
+  font-size: 0.92rem;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.puja-type-card__meta {
+  display: flex;
+  gap: 12px;
+}
+
+.puja-type-card__price {
+  font-weight: 700;
+  color: var(--color-primary);
+  font-size: 0.88rem;
+}
+
+.puja-type-card__duration {
+  color: var(--color-text-light);
+  font-size: 0.82rem;
+}
+
+.puja-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+}
+
+.puja-form-actions .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  background: var(--color-white);
+  transition: border-color 0.2s ease;
+  color: var(--color-text);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.form-group--full {
+  margin-bottom: 18px;
+}
+
+.family-section {
+  margin-top: 24px;
+  padding: 20px;
+  background: var(--color-cream);
+  border-radius: var(--radius-md);
+}
+
+.family-section__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.family-section__header h3 {
+  font-size: 1rem;
+  color: var(--color-primary);
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-icon:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-icon--danger {
+  border-color: #c0392b;
+  color: #c0392b;
+  padding: 6px 10px;
+}
+
+.btn-icon--danger:hover {
+  background: #c0392b;
+  color: var(--color-white);
+}
+
+.family-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.family-row input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  background: var(--color-white);
+}
+
+.family-row input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.time-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.time-slot {
+  padding: 10px;
+  text-align: center;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  background: var(--color-white);
+}
+
+.time-slot input { display: none; }
+
+.time-slot--selected {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.booking-summary {
+  background: var(--color-cream);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  margin-top: 28px;
+  border: 1px solid var(--color-border);
+}
+
+.booking-summary h3 {
+  font-size: 1rem;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+}
+
+.booking-summary__row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.9rem;
+}
+
+.booking-summary__row:last-child {
+  border-bottom: none;
+}
+
+.booking-summary__row span {
+  color: var(--color-text-light);
+}
+
+.puja-success {
+  max-width: 550px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.puja-success__icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--color-success);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto 24px;
+}
+
+.puja-success h2 {
+  margin-bottom: 16px;
+}
+
+.puja-success p {
+  color: var(--color-text-light);
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+.puja-success__bless {
+  color: var(--color-gold-dark) !important;
+  font-size: 1.1rem;
+  margin-top: 24px !important;
+  font-weight: 600;
+}
+
+/* Rituals */
+.rituals-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.ritual-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.ritual-card__header {
+  margin-bottom: 12px;
+}
+
+.ritual-card__header h3 {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.ritual-card__meta {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.ritual-card__price {
+  font-weight: 700;
+  color: var(--color-primary);
+  font-size: 1.1rem;
+}
+
+.ritual-card__duration {
+  color: var(--color-text-light);
+  font-size: 0.85rem;
+}
+
+.ritual-card p {
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.ritual-card__includes {
+  background: var(--color-cream);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  margin-bottom: 18px;
+}
+
+.ritual-card__includes strong {
+  font-size: 0.82rem;
+  color: var(--color-text);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.ritual-card__includes ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ritual-card__includes li {
+  font-size: 0.8rem;
+  background: var(--color-white);
+  padding: 3px 10px;
+  border-radius: 20px;
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+}
+
+/* Prasadam */
+.prasadam-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.prasadam-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.prasadam-card__icon {
+  font-size: 2rem;
+  margin-bottom: 14px;
+}
+
+.prasadam-card h3 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.prasadam-card p {
+  font-size: 0.88rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
+  margin-bottom: 18px;
+  flex: 1;
+}
+
+.prasadam-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border);
+}
+
+.prasadam-card__price {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+}
+
+.prasadam-note {
+  margin-top: 40px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-gold);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+}
+
+.prasadam-note p {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .puja-types-grid { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .time-slots-grid { grid-template-columns: repeat(3, 1fr); }
+  .rituals-grid { grid-template-columns: 1fr; }
+  .prasadam-grid { grid-template-columns: 1fr; }
+  .puja-steps { gap: 20px; }
+  .family-row { flex-wrap: wrap; }
+}
