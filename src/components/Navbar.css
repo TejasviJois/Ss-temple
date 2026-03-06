@@ -1,0 +1,246 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.navbar--scrolled {
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  background: var(--color-primary-dark);
+}
+
+.navbar__inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-gold);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.navbar__logo-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.navbar__logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar__logo-main {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.navbar__logo-sub {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.navbar__toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-gold);
+  font-size: 1.5rem;
+  padding: 8px;
+}
+
+.navbar__nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.navbar__link {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--color-gold);
+  background: rgba(212, 168, 67, 0.1);
+}
+
+.navbar__link--dropdown {
+  font-size: 0.85rem;
+}
+
+.navbar__chevron {
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.navbar__dropdown--open .navbar__chevron {
+  transform: rotate(180deg);
+}
+
+.navbar__dropdown {
+  position: relative;
+}
+
+.navbar__dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 280px;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 8px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all 0.25s ease;
+  border: 1px solid var(--color-border);
+  z-index: 100;
+}
+
+.navbar__dropdown--open .navbar__dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.navbar__dropdown-item {
+  display: block;
+  padding: 10px 20px;
+  color: var(--color-text);
+  font-size: 0.88rem;
+  transition: all 0.2s ease;
+}
+
+.navbar__dropdown-item:hover {
+  background: var(--color-cream);
+  color: var(--color-primary);
+  padding-left: 24px;
+}
+
+.navbar__login {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-gold);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 18px;
+  border: 1.5px solid var(--color-gold);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  margin-left: 8px;
+}
+
+.navbar__login:hover {
+  background: var(--color-gold);
+  color: var(--color-primary-dark);
+}
+
+.navbar__logout {
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.navbar__logout:hover {
+  background: var(--color-gold);
+  color: var(--color-primary-dark);
+}
+
+@media (max-width: 960px) {
+  .navbar__toggle {
+    display: block;
+  }
+
+  .navbar__nav {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-primary-dark);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+    gap: 4px;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .navbar__nav--open {
+    transform: translateX(0);
+  }
+
+  .navbar__link {
+    padding: 12px 16px;
+    font-size: 0.95rem;
+  }
+
+  .navbar__dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    background: rgba(0, 0, 0, 0.15);
+    box-shadow: none;
+    border: none;
+    border-radius: var(--radius-sm);
+    margin-top: 4px;
+    display: none;
+  }
+
+  .navbar__dropdown--open .navbar__dropdown-menu {
+    display: block;
+  }
+
+  .navbar__dropdown-item {
+    color: rgba(255, 255, 255, 0.85);
+    padding: 10px 20px 10px 32px;
+    font-size: 0.9rem;
+  }
+
+  .navbar__dropdown-item:hover {
+    background: rgba(212, 168, 67, 0.1);
+    color: var(--color-gold);
+    padding-left: 36px;
+  }
+
+  .navbar__login {
+    margin: 16px 0 0;
+    justify-content: center;
+  }
+}

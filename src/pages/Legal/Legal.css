@@ -1,0 +1,126 @@
+.legal-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.legal-content h2 {
+  font-size: 1.35rem;
+  margin-top: 40px;
+  margin-bottom: 12px;
+}
+
+.legal-content h2:first-child {
+  margin-top: 0;
+}
+
+.legal-content p {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--color-text-light);
+  margin-bottom: 14px;
+}
+
+.legal-content ul, .legal-content ol {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.legal-content li {
+  font-size: 0.93rem;
+  color: var(--color-text-light);
+  line-height: 1.75;
+  margin-bottom: 6px;
+}
+
+.legal-content strong {
+  color: var(--color-text);
+}
+
+.legal-content .legal-update {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  font-style: italic;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.legal-highlight {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-gold);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  margin: 24px 0;
+}
+
+.legal-highlight h3 {
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+}
+
+.legal-highlight p {
+  margin-bottom: 6px;
+}
+
+/* ─── FAQ ─── */
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-item {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+.faq-item--open {
+  box-shadow: var(--shadow-sm);
+  border-color: var(--color-gold);
+}
+
+.faq-item__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 18px 24px;
+  background: none;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+  text-align: left;
+  cursor: pointer;
+  gap: 12px;
+  font-family: var(--font-body);
+}
+
+.faq-item--open .faq-item__question {
+  color: var(--color-primary);
+}
+
+.faq-item__chevron {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.faq-item--open .faq-item__chevron {
+  transform: rotate(180deg);
+  color: var(--color-primary);
+}
+
+.faq-item__answer {
+  padding: 0 24px 18px;
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  line-height: 1.75;
+}
