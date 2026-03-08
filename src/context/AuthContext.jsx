@@ -1,16 +1,13 @@
 import { createContext, useContext, useState, useEffect, useRef } from 'react'
-import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  signOut as firebaseSignOut,
-  onAuthStateChanged,
-  signInWithPhoneNumber,
-  RecaptchaVerifier,
-} from 'firebase/auth'
-import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore'
-import { auth, db } from '../lib/firebase'
+import { supabase } from '../lib/supabase'
 
 const AuthContext = createContext(null)
+
+// Supabase user has .id (UUID); expose as .uid for compatibility with code that expected Firebase
+function toAuthUser(supabaseUser) {
+  if (!supabaseUser) return null
+  return { ...supabaseUser, uid: supabaseUser.id }
+}
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
@@ -19,20 +16,19 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true)
   const phoneConfirmationRef = useRef(null)
 
-  // Firebase Auth persists session per browser (JWT) — multiple users can be logged in on different devices
-  async function fetchProfiles(uid) {
-    if (!uid) {
+  async function fetchProfiles(userId) {
+    if (!userId) {
       setMember(null)
       setAdmin(null)
       return { member: null, admin: null }
     }
     try {
-      const [memberSnap, adminSnap] = await Promise.all([
-        getDoc(doc(db, 'members', uid)),
-        getDoc(doc(db, 'adminRoles', uid)),
+      const [memberRes, adminRes] = await Promise.all([
+        supabase.from('members').select('*').eq('id', userId).maybeSingle(),
+        supabase.from('admin_roles').select('*').eq('id', userId).maybeSingle(),
       ])
-      const m = memberSnap.exists() ? { id: memberSnap.id, ...memberSnap.data() } : null
-      const a = adminSnap.exists() ? { id: adminSnap.id, ...adminSnap.data() } : null
+      const m = memberRes.data ? { id: memberRes.data.id, ...memberRes.data } : null
+      const a = adminRes.data ? { id: adminRes.data.id, ...adminRes.data } : null
       setMember(m)
       setAdmin(a)
       return { member: m, admin: a }
@@ -44,56 +40,75 @@ export function AuthProvider({ children }) {
   }
 
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, async (firebaseUser) => {
-      setUser(firebaseUser)
-      if (firebaseUser) {
-        await fetchProfiles(firebaseUser.uid)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      const authUser = session?.user ? toAuthUser(session.user) : null
+      setUser(authUser)
+      if (authUser) {
+        await fetchProfiles(authUser.id)
       } else {
         setMember(null)
         setAdmin(null)
       }
       setLoading(false)
     })
-    return () => unsub()
+
+    // Initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      const authUser = session?.user ? toAuthUser(session.user) : null
+      setUser(authUser)
+      if (authUser) {
+        fetchProfiles(authUser.id).then(() => setLoading(false))
+      } else {
+        setLoading(false)
+      }
+    })
+
+    return () => subscription?.unsubscribe()
   }, [])
 
   const loginWithEmail = async (email, password) => {
-    const userCred = await signInWithEmailAndPassword(auth, email, password)
-    const { member: m, admin: a } = await fetchProfiles(userCred.user.uid)
-    return { user: userCred.user, session: userCred.user, member: m, admin: a }
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+    if (error) throw error
+    const authUser = toAuthUser(data.user)
+    const { member: m, admin: a } = await fetchProfiles(authUser.id)
+    return { user: authUser, session: authUser, member: m, admin: a }
   }
 
   const loginWithOtp = async (phone) => {
     const normalized = phone.replace(/\D/g, '')
     const phoneNumber = normalized.length >= 10 ? `+91${normalized}` : phone
-    if (!window.recaptchaVerifier) {
-      window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-        size: 'invisible',
-        callback: () => {},
-      })
-    }
-    const confirmationResult = await signInWithPhoneNumber(auth, phoneNumber, window.recaptchaVerifier)
-    phoneConfirmationRef.current = confirmationResult
+    const { data, error } = await supabase.auth.signInWithOtp({ phone: phoneNumber })
+    if (error) throw error
+    phoneConfirmationRef.current = { phone: phoneNumber }
     return {}
   }
 
   const verifyOtp = async (phone, token) => {
-    const confirmationResult = phoneConfirmationRef.current
-    if (!confirmationResult) throw new Error('Please request OTP again.')
-    const userCred = await confirmationResult.confirm(token.trim())
+    const normalized = phone.replace(/\D/g, '')
+    const phoneNumber = normalized.length >= 10 ? `+91${normalized}` : phone
+    const { data, error } = await supabase.auth.verifyOtp({
+      phone: phoneNumber,
+      token: token.trim(),
+      type: 'sms',
+    })
+    if (error) throw error
     phoneConfirmationRef.current = null
-    const { member: m, admin: a } = await fetchProfiles(userCred.user.uid)
-    return { user: userCred.user, session: userCred.user, member: m, admin: a }
+    const authUser = toAuthUser(data.user)
+    const { member: m, admin: a } = await fetchProfiles(authUser.id)
+    return { user: authUser, session: authUser, member: m, admin: a }
   }
 
   const signUp = async (email, password, metadata = {}) => {
-    const userCred = await createUserWithEmailAndPassword(auth, email, password)
-    return { data: { user: userCred.user } }
+    const { data, error } = await supabase.auth.signUp({ email, password, options: { data: metadata } })
+    if (error) throw error
+    const authUser = data.user ? toAuthUser(data.user) : null
+    return { data: { user: authUser } }
   }
 
   const createMemberProfile = async (uid, profile) => {
     const memberId = 'MBR' + Date.now().toString(36).toUpperCase()
-    const data = {
+    const row = {
+      id: uid,
       member_id: memberId,
       full_name: profile.fullName || '',
       mobile: profile.mobile || '',
@@ -103,9 +118,10 @@ export function AuthProvider({ children }) {
       member_since: new Date().toISOString().slice(0, 10),
       updated_at: new Date().toISOString(),
     }
-    await setDoc(doc(db, 'members', uid), data, { merge: true })
+    const { error } = await supabase.from('members').upsert(row, { onConflict: 'id' })
+    if (error) throw error
     await fetchProfiles(uid)
-    return { id: uid, ...data }
+    return { id: uid, ...row }
   }
 
   const updateMemberProfile = async (updates) => {
@@ -123,8 +139,8 @@ export function AuthProvider({ children }) {
       state: updates.state || null,
       updated_at: new Date().toISOString(),
     }
-    const ref = doc(db, 'members', user.uid)
-    await updateDoc(ref, payload)
+    const { error } = await supabase.from('members').update(payload).eq('id', user.id)
+    if (error) throw error
     const updated = { ...member, ...payload }
     setMember(updated)
     return updated
@@ -135,7 +151,7 @@ export function AuthProvider({ children }) {
   }
 
   const logout = async () => {
-    await firebaseSignOut(auth)
+    await supabase.auth.signOut()
     setUser(null)
     setMember(null)
     setAdmin(null)
