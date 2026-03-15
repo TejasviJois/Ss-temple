@@ -22,7 +22,7 @@ export default function ForgotPassword() {
         <div className="container">
           <div className="auth-container auth-container--wide">
             <div className="auth-form card">
-              <div className="auth-logo">ॐ</div>
+              <div className="auth-logo"><img src="/logo.png" alt="SHREE SAMRAJYALAKSHMI TEMPLE" /></div>
               <h2>Forgot Password</h2>
               {sent ? (
                 <p style={{ textAlign: 'center', color: 'var(--color-text-light)', marginBottom: 20 }}>

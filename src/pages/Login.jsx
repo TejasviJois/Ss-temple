@@ -79,7 +79,7 @@ export default function Login() {
         <div className="container">
           <div className="auth-container auth-container--wide">
             <div className="auth-form card auth-form--tabs">
-              <div className="auth-logo">ॐ</div>
+              <div className="auth-logo"><img src="/logo.png" alt="SHREE SAMRAJYALAKSHMI TEMPLE" /></div>
               <h2>Sign In</h2>
               {error && <div className="auth-error" role="alert">{error}</div>}
 

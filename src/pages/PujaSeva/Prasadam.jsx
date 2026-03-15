@@ -42,7 +42,7 @@ export default function Prasadam() {
           <div className="prasadam-note">
             <p>
               <strong>Note:</strong> All prasadam items are blessed during authentic Vedic rituals
-              at the Shree Samrajya Lakshmi Temple. Shipping is available across India.
+              at the SHREE SAMRAJYALAKSHMI TEMPLE. Shipping is available across India.
               For international orders, please contact us directly.
             </p>
           </div>

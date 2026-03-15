@@ -12,7 +12,7 @@ export default function TaxInfo() {
           <div className="legal-content">
             <h2>Tax Exemption for Donors</h2>
             <p>
-              The Swarga Nidhi Seva Ashram Trust, which administers the Shree Samrajya Lakshmi Temple,
+              The Swarga Nidhi Seva Ashram Trust, which administers the SHREE SAMRAJYALAKSHMI TEMPLE (ಶ್ರೀ ಸಾಮ್ರಾಜಲಕ್ಷ್ಮಿ ದೇವಾಲಯ),
               is a registered charitable trust under the Indian Income Tax Act. All eligible donations
               qualify for tax deductions.
             </p>

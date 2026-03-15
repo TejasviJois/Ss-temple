@@ -5,7 +5,7 @@ export default function AboutTemple() {
     <div className="about-page">
       <div className="page-banner">
         <h1>About the Temple</h1>
-        <p>A Sacred Abode of Shree Samrajya Lakshmi</p>
+        <p>ಶ್ರೀ ಸಾಮ್ರಾಜಲಕ್ಷ್ಮಿ ದೇವಾಲಯ — SHREE SAMRAJYALAKSHMI TEMPLE</p>
       </div>
 
       <section className="section">
@@ -15,7 +15,7 @@ export default function AboutTemple() {
               <h2>A Vision Born of Divine Grace</h2>
               <div className="divider" style={{ margin: '16px 0 24px' }} />
               <p>
-                The Shree Samrajya Lakshmi Temple is a sacred institution founded under the
+                The SHREE SAMRAJYALAKSHMI TEMPLE (ಶ್ರೀ ಸಾಮ್ರಾಜಲಕ್ಷ್ಮಿ ದೇವಾಲಯ) is a sacred institution founded under the
                 divine guidance of Pujya Shree Krupanidhi Guruji. It stands as a beacon of
                 spiritual awakening, dedicated to the worship and propagation of the ancient
                 and powerful traditions associated with Samrajya Lakshmi — the highest form
@@ -43,7 +43,7 @@ export default function AboutTemple() {
               <div className="about-highlight-box">
                 <h3>Our Vision</h3>
                 <p>
-                  To establish the Shree Samrajya Lakshmi Temple as a world-renowned
+                  To establish the SHREE SAMRAJYALAKSHMI TEMPLE as a world-renowned
                   center of spiritual excellence, where ancient wisdom meets modern
                   accessibility. We envision a global community of devotees empowered
                   by divine grace to lead with purpose and serve with compassion.
@@ -73,7 +73,7 @@ export default function AboutTemple() {
               <div className="divider" style={{ margin: '16px 0 24px' }} />
               <p>
                 Dr. Krupanidhi Guruji is the spiritual founder and guiding force behind the
-                Shree Samrajya Lakshmi Temple. With decades of deep spiritual practice, Vedic
+                SHREE SAMRAJYALAKSHMI TEMPLE. With decades of deep spiritual practice, Vedic
                 scholarship, and unwavering devotion, Guruji has dedicated his life to reviving
                 the lost traditions of Samrajya Lakshmi worship.
               </p>
