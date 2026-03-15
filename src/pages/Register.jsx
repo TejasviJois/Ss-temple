@@ -116,7 +116,7 @@ export default function Register() {
         <div className="container">
           <div className="auth-container auth-container--wide">
             <div className="auth-form card auth-form--tabs">
-              <div className="auth-logo">ॐ</div>
+              <div className="auth-logo"><img src="/logo.png" alt="SHREE SAMRAJYALAKSHMI TEMPLE" /></div>
               <h2>Register</h2>
               {error && <div className="auth-error" role="alert">{error}</div>}
 
@@ -141,7 +141,7 @@ export default function Register() {
                     <button type="button" className={`auth-tab ${method === 'mobile' ? 'auth-tab--active' : ''}`} onClick={() => { setMethod('mobile'); setOtpStep('send'); update('otp', ''); setError('') }}>
                       <FiSmartphone /> Mobile + OTP
                     </button>
-                    <button type="button" className={`auth-tab ${method === 'email' ? 'auth-tab--active' : ''}`} onClick={() => setMethod('email'); setError('')}>
+                    <button type="button" className={`auth-tab ${method === 'email' ? 'auth-tab--active' : ''}`} onClick={() => { setMethod('email'); setError(''); }}>
                       <FiMail /> Email + Password
                     </button>
                   </div>
@@ -217,7 +217,7 @@ export default function Register() {
                   <div className="consent-box">
                     <label>
                       <input type="checkbox" required checked={form.terms} onChange={(e) => update('terms', e.target.checked)} />
-                      <span>I agree to the <Link to="/legal/terms" target="_blank">Terms & Conditions</Link> of Shree Samrajya Lakshmi Temple.</span>
+                      <span>I agree to the <Link to="/legal/terms" target="_blank">Terms & Conditions</Link> of SHREE SAMRAJYALAKSHMI TEMPLE.</span>
                     </label>
                   </div>
                   <div className="consent-box">

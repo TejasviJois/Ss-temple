@@ -47,8 +47,17 @@
   color: var(--color-gold);
   font-size: 3.5rem;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
   line-height: 1.15;
+}
+
+.hero__title-en {
+  font-family: var(--font-heading);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.25rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 20px;
+  font-weight: 500;
 }
 
 .hero__subtitle {

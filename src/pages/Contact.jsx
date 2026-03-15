@@ -29,7 +29,7 @@ export default function Contact() {
                   <div className="contact-detail__icon"><FiMapPin /></div>
                   <div>
                     <h4>Temple Address</h4>
-                    <p>Shree Samrajya Lakshmi Temple,<br />Madhugiri, Tumkur District,<br />Karnataka 572101, India</p>
+                    <p>SHREE SAMRAJYALAKSHMI TEMPLE<br />ಶ್ರೀ ಸಾಮ್ರಾಜಲಕ್ಷ್ಮಿ ದೇವಾಲಯ<br />Madhugiri, Tumkur District,<br />Karnataka 572101, India</p>
                   </div>
                 </div>
                 <div className="contact-detail">

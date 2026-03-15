@@ -9,10 +9,10 @@ export default function Footer() {
         <div className="container">
           <div className="footer__brand-row">
             <div className="footer__logo">
-              <span className="footer__logo-icon">ॐ</span>
+              <img src="/logo.png" alt="ಶ್ರೀ ಸಾಮ್ರಾಜಲಕ್ಷ್ಮಿ ದೇವಾಲಯ" className="footer__logo-img" />
               <div>
-                <h3>Shree Samrajya Lakshmi</h3>
-                <span>Temple</span>
+                <h3>ಶ್ರೀ ಸಾಮ್ರಾಜಲಕ್ಷ್ಮಿ ದೇವಾಲಯ</h3>
+                <span>SHREE SAMRAJYALAKSHMI TEMPLE</span>
               </div>
             </div>
             <p className="footer__tagline">
@@ -70,7 +70,7 @@ export default function Footer() {
 
       <div className="footer__bottom">
         <div className="container">
-          <p>&copy; {new Date().getFullYear()} Shree Samrajya Lakshmi Temple. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} SHREE SAMRAJYALAKSHMI TEMPLE. All rights reserved.</p>
           <div className="footer__bottom-links">
             <Link to="/legal/privacy">Privacy Policy</Link>
             <Link to="/legal/terms">Terms & Conditions</Link>

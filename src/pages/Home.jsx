@@ -25,7 +25,8 @@ export default function Home() {
         <div className="hero__overlay" />
         <div className="hero__content">
           <p className="hero__pre">|| श्री समराज्य लक्ष्म्यै नमः ||</p>
-          <h1 className="hero__title">Shree Samrajya Lakshmi Temple</h1>
+          <h1 className="hero__title">ಶ್ರೀ ಸಾಮ್ರಾಜಲಕ್ಷ್ಮಿ ದೇವಾಲಯ</h1>
+          <p className="hero__title-en">SHREE SAMRAJYALAKSHMI TEMPLE</p>
           <p className="hero__subtitle">
             Embrace the path of divine leadership and achieve holistic success
             through the blessings of the highest form of Lakshmi

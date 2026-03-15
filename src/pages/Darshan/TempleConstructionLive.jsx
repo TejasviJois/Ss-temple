@@ -30,7 +30,7 @@ export default function TempleConstructionLive() {
               <h2>About the Construction</h2>
               <div className="divider" style={{ margin: '16px 0 24px' }} />
               <p>
-                The Shree Samrajya Lakshmi Temple is being constructed following traditional
+                The SHREE SAMRAJYALAKSHMI TEMPLE (ಶ್ರೀ ಸಾಮ್ರಾಜಲಕ್ಷ್ಮಿ ದೇವಾಲಯ) is being constructed following traditional
                 Vastu Shastra and Agama principles, ensuring that every aspect of the structure
                 resonates with divine energy. The temple will feature intricate carvings,
                 sacred geometry, and spaces designed for various forms of worship and meditation.

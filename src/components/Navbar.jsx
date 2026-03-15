@@ -81,10 +81,10 @@ export default function Navbar() {
     <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`} ref={navRef}>
       <div className="navbar__inner">
         <Link to="/" className="navbar__logo">
-          <span className="navbar__logo-icon">ॐ</span>
+          <img src="/logo.png" alt="ಶ್ರೀ ಸಾಮ್ರಾಜಲಕ್ಷ್ಮಿ ದೇವಾಲಯ" className="navbar__logo-img" />
           <div className="navbar__logo-text">
-            <span className="navbar__logo-main">Shree Samrajya Lakshmi</span>
-            <span className="navbar__logo-sub">Temple</span>
+            <span className="navbar__logo-main">ಶ್ರೀ ಸಾಮ್ರಾಜಲಕ್ಷ್ಮಿ ದೇವಾಲಯ</span>
+            <span className="navbar__logo-sub">SHREE SAMRAJYALAKSHMI TEMPLE</span>
           </div>
         </Link>
 
